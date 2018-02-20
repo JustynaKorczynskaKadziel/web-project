@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+import { RouterModule } from "@angular/router";
 
 
 import { AppComponent } from './app.component';
@@ -35,10 +38,19 @@ import { ContactComponent } from './contact-us/contact/contact.component';
     AddRoomComponent,
     EditRoomComponent,
     ContactComponent,
-    MapComponent
+    MapComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot([
+      {path: '', redirectTo: 'home', pathMatch: 'full' },
+      {path: 'home', component: HomeComponent},
+      {path: 'rooms', component: RoomsComponent},
+      {path: 'contact', component: ContactComponent},
+      {path: 'admin', component:AdminManagementComponent}
+    ]),
   ],
   providers: [],
   bootstrap: [AppComponent]
